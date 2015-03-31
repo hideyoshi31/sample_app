@@ -1,4 +1,7 @@
 class Micropost < ActiveRecord::Base
+  require 'file_size_validator'
+  mount_uploader :image, ImageUploader
+  validates :image, :presence => true, :file_size => {:maximum => 10.megabytes.to_i}
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 140 }

@@ -4,6 +4,15 @@
       <%= link_to feed_item.user.name, feed_item.user %>
     </span>
     <span class="content"><%= feed_item.content %></span>
+    
+    <!-- 追加箇所 開始 -->
+    <span class="image">
+      <% if feed_item.image? %>
+          <%= image_tag feed_item.image.url %>
+      <% end %>
+    </span><br>
+    <!-- 追加箇所 終了 -->
+    
     <span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
